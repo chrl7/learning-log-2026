@@ -37,3 +37,23 @@ Python is dynamically typed—which means you don’t need to specify “this is
 4. Set {} (without :)
    -Bag of unique marbles — order doesn’t matter, no duplicates allowed
    -Mutable, unordered, no duplicates
+
+---
+
+---
+
+# List Comprehension & Dictionary Comprehension
+
+## Quick Concept + Analogy
+
+Imagine the traditional way (using a loop) is like writing a long letter asking someone to add items one by one to a basket. A comprehension is like giving a one-line instruction: “Collect all items that meet this condition and put them directly into the basket.”
+
+General List Comprehension Pattern:
+[expression for item in iterable if condition]
+
+General Pattern for Dictionary Comprehension:
+{key_expr: value_expr for item in iterable if condition}
+
+The `if condition` part is optional—it’s only used if you want to filter.
+
+Important note: Comprehensions are great for simple cases. When the logic gets complicated (many branching conditions, many lines of code), it’s better to use a regular loop. Comprehensions that are too complex actually make the code hard to read—remember the principle that "readability counts."
