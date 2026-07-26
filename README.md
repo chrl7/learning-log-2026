@@ -29,7 +29,7 @@ projects/   → mini-projects combining multiple modules
 | 01  | Variables & Data Types             | [code][m1-01] |   ✅   |
 | 02  | Data Structures                    | [code][m1-02] |   ✅   |
 | 03  | Comprehensions list and dictionary | [code][m1-03] |   ✅   |
-| 04  | Functions, Modules                 | [code][m1-04] |   ⏳   |
+| 04  | Functions, Modules                 | [code][m1-04] |   ✅   |
 | 05  | OOP, Error Handling, File I/O      | [code][m1-05] |   ⏳   |
 
 Full notes: [notes.md][m1-notes]
@@ -38,6 +38,7 @@ Project built from this module: [01 — CLI To-Do App][p1]
 [m1-01]: ./modules/01-python-fundamentals/01_variables_and_data_types.py
 [m1-02]: ./modules/01-python-fundamentals/02_data_structures.py
 [m1-03]: ./modules/01-python-fundamentals/03_list_dictionary_comprehension.py
+[m1-04]: ./modules/01-python-fundamentals/04_function_and_module.py
 [m1-notes]: ./modules/01-python-fundamentals/notes.md
 
 ## Module 02 — SQL & Databases
