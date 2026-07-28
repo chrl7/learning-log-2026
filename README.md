@@ -39,6 +39,7 @@ Project built from this module: [01 — CLI To-Do App][p1]
 [m1-02]: ./modules/01-python-fundamentals/02_data_structures.py
 [m1-03]: ./modules/01-python-fundamentals/03_list_dictionary_comprehension.py
 [m1-04]: ./modules/01-python-fundamentals/04_function_and_module.py
+[m1-05]: ./modules/01-python-fundamentals/05_OOP_ErrorHandling_FileIO.py
 [m1-notes]: ./modules/01-python-fundamentals/notes.md
 
 ## Module 02 — SQL & Databases

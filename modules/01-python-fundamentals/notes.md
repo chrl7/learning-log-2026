@@ -86,3 +86,18 @@ Global variable is Variables declared outside a function (at the top-level of th
 # Module
 
 A module is a .py file containing a collection of functions (or variables, classes) that can be reused in other files. It offers a level of "reusability" one step above that of a function—while a function is reusable within a single file, a module is reusable across files and projects.
+
+---
+
+---
+
+# OOP
+
+| term     | analogy                                          |
+| :------- | :----------------------------------------------- |
+| class    | Template/design                                  |
+| object   | The actual result of the template                |
+| atribut  | Characteristics/data (color, brand)              |
+| method   | Capabilities/actions (go, stop)                  |
+| **init** | The initial process when a new object is created |
+| self     | “My own” — refers to the object itself           |
