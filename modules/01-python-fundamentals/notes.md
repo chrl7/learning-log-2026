@@ -101,3 +101,33 @@ A module is a .py file containing a collection of functions (or variables, class
 | method   | Capabilities/actions (go, stop)                  |
 | **init** | The initial process when a new object is created |
 | self     | “My own” — refers to the object itself           |
+
+# inheritance and polymorphism
+
+Inheritance is like the relationship between parents and children. Children inherit general traits from their parents (e.g., having eyes, having hands, being able to eat), but they can also have additional traits that are unique to them (e.g., being good at playing the guitar).
+
+Polymorphism is the concept of “same form, different behavior.” Example: the command “make a sound” is the same for all animals, but:
+A cat makes a sound → "Meow"
+A dog makes a sound → "Woof"
+A duck makes a sound → "Quack"
+The method is called "make-sound()" in all cases, but each class has its own way of "responding" to that call. That is polymorphism.
+
+| term                      | analogy                                                                  |
+| :------------------------ | :----------------------------------------------------------------------- |
+| Inheritance               | A child inherits traits from a parent                                    |
+| Parent class (base class) | Parent / general category                                                |
+| Child class (subclass)    | Characteristics/data (color, brand)                                      |
+| Override                  | A child has its “own style” even though the method name is the same      |
+| super()                   | "Borrows" a constructor or method from the parent                        |
+| Polymorphism              | The same command produces different results depending on who executes it |
+
+# Error Handling (try-except & custom exception).
+
+| term                  | function                                                                                   |
+| :-------------------- | :----------------------------------------------------------------------------------------- |
+| try                   | Code to be "tried"                                                                         |
+| except ErrorType as e | Catch a specific type of error; e = the error message                                      |
+| else                  | Execute if the try block succeeds (no error)                                               |
+| finally               | Always executes, regardless of whether an error occurs                                     |
+| raise                 | Intentionally trigger/raise an error                                                       |
+| Custom Exception      | A new class that inherits from Exception, for errors specific to our application’s context |
