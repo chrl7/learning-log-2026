@@ -131,3 +131,13 @@ The method is called "make-sound()" in all cases, but each class has its own way
 | finally               | Always executes, regardless of whether an error occurs                                     |
 | raise                 | Intentionally trigger/raise an error                                                       |
 | Custom Exception      | A new class that inherits from Exception, for errors specific to our application’s context |
+
+# file i/o
+
+| Concept                         | function                          |
+| :------------------------------ | :-------------------------------- |
+| open(file, mode)                | Open a file                       |
+| with ... as                     | Auto-close a file (best practice) |
+| "w" / "r" / "a"                 | Write/read/append mode            |
+| csv.writer / csv.reader         | Read/write CSV as a list          |
+| csv.DictWriter / csv.DictReader | Read/write CSV as a dictionary    |

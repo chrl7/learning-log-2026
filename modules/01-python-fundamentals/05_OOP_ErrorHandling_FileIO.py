@@ -69,6 +69,26 @@ print("The program continues running after the error is handled.")
 
 
 
+# file I/O
+import csv
+
+# Writing using a dictionary
+with open("books2.csv", "w", newline="", encoding="utf-8") as file:
+    fieldnames = ["title", "author", "year"]
+    writer = csv.DictWriter(file, fieldnames=fieldnames)
+    writer.writeheader()
+    writer.writerow(
+        {"title": "Atomic Habits", "author": "James Clear", "year": 2018}
+    )
+
+# Reading as a dictionary (nama file disamakan: books2.csv)
+with open("books2.csv", "r", encoding="utf-8") as file:
+    reader = csv.DictReader(file)
+    for row in reader:
+        print(row["title"], "-", row["author"])
+
+
+
 
 
 # ====================================------------------------ Exercise -------------------======================================
@@ -139,6 +159,65 @@ for emp in employees :
 
 
 # Exercise 3 :
-# 1) Create a custom exception called `UmurTidakValid` (inheriting from `Exception`)
-# 2) Create a function `daftar_pemilih(name, age)`: a)If age < 0 → raise `InvalidAge("Age cannot be negative")`. b)If age < 17 → raise `InvalidAge("Not old enough to vote (minimum age is 17)")`. 3) If valid → print "[name] has been successfully registered as a voter.""
+# 1) Create a custom exception called 'AgeInvalid' (inheriting from 'Exception')
+# 2) Create a function 'voter_list(name, age)': a)If age < 0 → raise 'InvalidAge("Age cannot be negative")'. b)If age < 17 → raise 'InvalidAge("Not old enough to vote (minimum age is 17)")`. 3) If valid → print "[name] has been successfully registered as a voter."
 # 3) Call voter_list() for 3 different cases (negative age, age under 17, valid age) wrapped in a try-except block, and print an error message if it fails
+class AgeInvalid(Exception) :
+    pass
+
+def voter_list(name,age):
+    if age < 0 :
+        raise AgeInvalid("Age cannot be negative")
+    elif age < 17 :
+        raise AgeInvalid("Not old enough to vote (minimum age is 17)")
+    else :
+        print(f"{name} has been successfully registered as a voter")
+        
+
+testing = [("Agus", -2), ("Bayu", 14), ("Chrl",20)]
+
+for name, age in testing :
+    try:
+        voter_list(name, age)
+    except AgeInvalid as e :
+        print(f"Registration for {name} failed {e}")
+
+
+
+# Exerecise 4 :
+# 1) Write a file named "student.csv" containing the headers "name", "score" and 3 rows of student data (use the standard "csv.writer")
+# Read the "student.csv" file again, then calculate the average score for all students (remember: the values in the CSV are strings, so you must convert them to "int()"" or "float()"first!)
+# Print the average score
+
+import csv
+
+student_data = [
+    ["name", "score"],
+    ["Ajeng", 80],
+    ["Bagas", 89],
+    ["Citra", 98]
+]
+
+with open("student.csv", mode="w", newline="", encoding="utf-8") as file :
+    writer = csv.writer(file)
+    writer.writerows(student_data)
+print("File student.csv successfully created!")
+
+total_scores = 0
+total_students = 0
+
+with open("student.csv", mode="r", encoding="utf-8") as file :
+    reader = csv.reader(file)
+    header = next(reader)
+    
+    for row in reader:
+        name=row[0]
+        score = float(row[1])
+        total_scores += score
+        total_students += 1
+    
+
+if total_students > 0:
+    average = total_scores/ total_students
+    print(f"number of students : {total_students}")
+    print(f"average student score : {average:.2f}")
