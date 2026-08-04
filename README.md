@@ -32,19 +32,23 @@ projects/   → mini-projects combining multiple modules
 | 04  | Functions, Modules                 | [code][m1-04] |   ✅   |
 | 05  | OOP, Error Handling, File I/O      | [code][m1-05] |   ✅   |
 
-Full notes: [notes.md][m1-notes]
-Project built from this module: [01 — CLI To-Do App][p1]
-
-[m1-01]: ./modules/01-python-fundamentals/01_variables_and_data_types.py
-[m1-02]: ./modules/01-python-fundamentals/02_data_structures.py
-[m1-03]: ./modules/01-python-fundamentals/03_list_dictionary_comprehension.py
-[m1-04]: ./modules/01-python-fundamentals/04_function_and_module.py
-[m1-05]: ./modules/01-python-fundamentals/05_OOP_ErrorHandling_FileIO.py
-[m1-notes]: ./modules/01-python-fundamentals/notes.md
+[m1-01]: modules\01-python-fundamentals\01_variables_and_data_types.py
+[m1-02]: modules\01-python-fundamentals\02_data_structures.py
+[m1-03]: modules\01-python-fundamentals\03_list_dictionary_comprehension.py
+[m1-04]: modules\01-python-fundamentals\04_function_and_module.py
+[m1-05]: modules\01-python-fundamentals\05_OOP_ErrorHandling_FileIO.py
+[m1-notes]: modules\01-python-fundamentals\notes.md
+[m1-Project]: ./projects/01-Simple-Finance-Tracker/main.py
 
 ## Module 02 — SQL & Databases
 
-_Not started yet._
+|  #  | Topic                                |     Output     | Status |
+| :-: | :----------------------------------- | :------------: | :----: |
+| 01  | Dasar SQL — SELECT & Filtering       | [notes][m2-01] |   🔄   |
+| 02  | Aggregation, JOIN, and Subqueries    |       -        |   ⏳   |
+| 03  | Database Design & Python Connections |       -        |   ⏳   |
+
+[m2-01]: modules\02-sql-database\01_SQLBasics-SELECT&Filtering
 
 ## Module 03 — Command Line/Terminal, Scripting & Docker
 
