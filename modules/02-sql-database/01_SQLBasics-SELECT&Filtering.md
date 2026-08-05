@@ -45,14 +45,14 @@ WHERE — filter which rows to display (like a spreadsheet filter)
 SELECT * FROM pelanggan WHERE kota = 'Wonosobo';
 ```
 
-'ORDER BY' — sort rows
+ORDER BY — sort rows
 
 ```sql
 SELECT * FROM produk ORDER BY harga ASC;
 SELECT * FROM produk ORDER BY harga DESC;
 ```
 
-'LIMIT' — restrict number of rows returned
+LIMIT — restrict number of rows returned
 
 ```sql
 SELECT * FROM produk ORDER BY harga DESC LIMIT 3;
@@ -68,4 +68,34 @@ ORDER BY harga DESC
 LIMIT 2;
 ```
 
----
+AND — all conditions must be true
+
+```sql
+SELECT * FROM pelanggan WHERE kota = 'Wonosobo' AND umur > 25;
+```
+
+OR — at least one condition must be true
+
+```sql
+SELECT * FROM pelanggan WHERE kota = 'Wonosobo' OR kota = 'Semarang';
+```
+
+IN — checks if a value matches any value in a list (shorthand for repeated OR)
+
+```sql
+SELECT * FROM pelanggan WHERE kota IN ('Wonosobo', 'Semarang', 'Yogyakarta');
+```
+
+BETWEEN — range check, inclusive of both bounds
+
+```sql
+SELECT * FROM produk WHERE harga BETWEEN 3000 AND 5000;
+```
+
+LIKE — pattern matching on text using `%` as wildcard
+
+```sql
+SELECT * FROM produk WHERE nama_produk LIKE 'Teh%';    -- starts with "Teh"
+SELECT * FROM produk WHERE nama_produk LIKE '%Botol%'; -- contains "Botol"
+SELECT * FROM produk WHERE nama_produk LIKE '%Instan'; -- ends with "Instan"
+```
