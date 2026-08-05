@@ -38,7 +38,7 @@ projects/   → mini-projects combining multiple modules
 [m1-04]: modules\01-python-fundamentals\04_function_and_module.py
 [m1-05]: modules\01-python-fundamentals\05_OOP_ErrorHandling_FileIO.py
 [m1-notes]: modules\01-python-fundamentals\notes.md
-[m1-Project]: ./projects/01-Simple-Finance-Tracker/main.py
+[m1-Project]: projects\01-Simple-Finance-Tracker\main.py
 
 ## Module 02 — SQL & Databases
 
@@ -69,7 +69,7 @@ _Not started yet._
 | [03 — Dockerized App][p3] | Containerize Project 01/02             |   ⏳   |
 | [04 — Final Project][p4]  | Full app + DB + Docker + cloud + CI    |   ⏳   |
 
-[p1]: ./projects/01-cli-todo-app
-[p2]: ./projects/02-data-analysis
-[p3]: ./projects/03-dockerized-app
-[p4]: ./projects/04-final-project
+[p1]: projects\01-Simple-Finance-Tracker\main.py
+[p2]: -
+[p3]: -
+[p4]: -
