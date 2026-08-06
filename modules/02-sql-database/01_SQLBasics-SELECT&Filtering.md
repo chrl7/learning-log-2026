@@ -99,3 +99,40 @@ SELECT * FROM produk WHERE nama_produk LIKE 'Teh%';    -- starts with "Teh"
 SELECT * FROM produk WHERE nama_produk LIKE '%Botol%'; -- contains "Botol"
 SELECT * FROM produk WHERE nama_produk LIKE '%Instan'; -- ends with "Instan"
 ```
+
+### Aggregate Functions & GROUP BY
+
+Aggregate functions — collapse many rows into a single summary value
+
+```sql
+SELECT COUNT(*) FROM pelanggan;   -- count rows
+SELECT SUM(harga) FROM produk;    -- sum values
+SELECT AVG(harga) FROM produk;    -- average
+SELECT MAX(harga) FROM produk;    -- highest value
+SELECT MIN(harga) FROM produk;    -- lowest value
+```
+
+GROUP BY — summarize data per category/group rather than as one grand total
+
+```sql
+SELECT kategori, COUNT(*) AS jumlah_produk
+FROM produk
+GROUP BY kategori;
+```
+
+Rule: any non-aggregate column in SELECT must also appear in GROUP BY.
+
+AS — alias to rename a result column for readability
+
+```sql
+SELECT kategori, AVG(harga) AS rata_rata_harga FROM produk GROUP BY kategori;
+```
+
+HAVING — filters grouped/aggregated results (runs _after_ grouping), as opposed to WHERE which filters rows _before_ grouping
+
+```sql
+SELECT kategori, COUNT(*) AS jumlah_produk
+FROM produk
+GROUP BY kategori
+HAVING COUNT(*) > 1;
+```
