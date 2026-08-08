@@ -137,7 +137,7 @@ GROUP BY kategori
 HAVING COUNT(*) > 1;
 ```
 
-Why `WHERE` can't filter on aggregate results (e.g. `WHERE AVG(harga) > 4000`):\*\*
+Why `WHERE` can't filter on aggregate results (e.g. `WHERE AVG(harga) > 4000`):
 `WHERE` executes row-by-row, _before_ rows are grouped — at that stage, an aggregate like `AVG()` can't be computed yet since it needs a collection of already-grouped rows. `HAVING` runs _after_ `GROUP BY` has grouped and aggregated the data, so it's the correct clause for filtering on aggregate results.
 
 Pattern: WHERE + GROUP BY + HAVING + ORDER BY combined\*\*
@@ -151,3 +151,37 @@ ORDER BY jumlah_pelanggan DESC;
 ```
 
 Execution order (conceptually): WHERE (filter rows) → GROUP BY (group) → aggregate functions computed → HAVING (filter groups) → ORDER BY (sort final result).
+
+### JOIN — Combining Data Across Tables
+
+Why JOIN is needed:Querying a table with foreign keys alone only returns raw IDs (e.g. `id_pelanggan = 1`), which isn't human-readable. JOIN combines rows from two or more tables based on a related column — typically matching a foreign key to a primary key.
+
+INNER JOIN — basic syntax
+
+```sql
+SELECT pesanan.id_pesanan, pelanggan.nama, pesanan.jumlah
+FROM pesanan
+INNER JOIN pelanggan ON pesanan.id_pelanggan = pelanggan.id_pelanggan;
+```
+
+Reads as: start from `pesanan`, join with `pelanggan` by matching `id_pelanggan` in both tables, then select the desired columns from either table.
+
+Joining 3 tables
+
+```sql
+SELECT pelanggan.nama, produk.nama_produk, pesanan.jumlah, pesanan.tanggal
+FROM pesanan
+INNER JOIN pelanggan ON pesanan.id_pelanggan = pelanggan.id_pelanggan
+INNER JOIN produk ON pesanan.id_produk = produk.id_produk;
+```
+
+`table.column` notation: Needed when multiple tables share a column name (e.g. `id_pelanggan` exists in both `pelanggan` and `pesanan`), to disambiguate which table's column is being referenced.
+
+Table aliases — shorten table names for readability
+
+```sql
+SELECT p.nama, pr.nama_produk, ps.jumlah
+FROM pesanan ps
+INNER JOIN pelanggan p ON ps.id_pelanggan = p.id_pelanggan
+INNER JOIN produk pr ON ps.id_produk = pr.id_produk;
+```
