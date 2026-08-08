@@ -136,3 +136,18 @@ FROM produk
 GROUP BY kategori
 HAVING COUNT(*) > 1;
 ```
+
+Why `WHERE` can't filter on aggregate results (e.g. `WHERE AVG(harga) > 4000`):\*\*
+`WHERE` executes row-by-row, _before_ rows are grouped — at that stage, an aggregate like `AVG()` can't be computed yet since it needs a collection of already-grouped rows. `HAVING` runs _after_ `GROUP BY` has grouped and aggregated the data, so it's the correct clause for filtering on aggregate results.
+
+Pattern: WHERE + GROUP BY + HAVING + ORDER BY combined\*\*
+
+```sql
+SELECT kota, COUNT(*) AS jumlah_pelanggan
+FROM pelanggan
+GROUP BY kota
+HAVING COUNT(*) > 1
+ORDER BY jumlah_pelanggan DESC;
+```
+
+Execution order (conceptually): WHERE (filter rows) → GROUP BY (group) → aggregate functions computed → HAVING (filter groups) → ORDER BY (sort final result).
