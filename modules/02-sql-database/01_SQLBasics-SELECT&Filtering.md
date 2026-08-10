@@ -185,3 +185,30 @@ FROM pesanan ps
 INNER JOIN pelanggan p ON ps.id_pelanggan = p.id_pelanggan
 INNER JOIN produk pr ON ps.id_produk = pr.id_produk;
 ```
+
+### LEFT JOIN & NULL
+
+LEFT JOIN — returns _all_ rows from the left (first-named) table, even when there's no matching row in the right table. Unmatched columns from the right table are filled with "NULL".
+
+```sql
+SELECT pelanggan.nama, pesanan.jumlah
+FROM pelanggan
+LEFT JOIN pesanan ON pelanggan.id_pelanggan = pesanan.id_pelanggan;
+```
+
+Contrast with "INNER JOIN", which only returns rows that have a match in both tables — rows without a match (e.g. a customer who never ordered) are silently excluded.
+
+NULL — represents "no value," distinct from 0 or an empty string. Must be checked with `IS NULL` / `IS NOT NULL`, never `= NULL` (which never evaluates as expected in SQL).
+
+```sql
+SELECT * FROM pelanggan
+LEFT JOIN pesanan ON pelanggan.id_pelanggan = pesanan.id_pelanggan
+WHERE pesanan.id_pesanan IS NULL;
+```
+
+This pattern finds "orphan" rows in the left table — records with no matching counterpart in the right table (e.g. customers who never placed an order).
+
+When to use which:
+
+- `INNER JOIN` — only care about rows with a complete match in both tables (e.g. sales reports).
+- `LEFT JOIN` — need all rows from the main table regardless of match (e.g. customer engagement reports, including those with zero activity).
