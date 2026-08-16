@@ -212,3 +212,79 @@ When to use which:
 
 - `INNER JOIN` — only care about rows with a complete match in both tables (e.g. sales reports).
 - `LEFT JOIN` — need all rows from the main table regardless of match (e.g. customer engagement reports, including those with zero activity).
+
+### LEFT JOIN — Advanced Patterns
+
+Filtering inside ON (not WHERE) — keeps other rows intact instead of excluding them
+
+```sql
+SELECT pelanggan.nama
+FROM pelanggan
+LEFT JOIN pesanan ON pelanggan.id_pelanggan = pesanan.id_pelanggan
+LEFT JOIN produk ON pesanan.id_produk = produk.id_produk AND produk.kategori = 'Perawatan'
+GROUP BY pelanggan.id_pelanggan, pelanggan.nama
+HAVING COUNT(produk.id_produk) = 0;
+```
+
+Putting the category filter in `ON` instead of `WHERE` means non-matching rows still appear (with `NULL` in the joined columns) rather than being dropped entirely — necessary when checking "never matched" across a customer's full order history.
+
+COALESCE — replaces `NULL` with a default value. Important because `SUM()`/`AVG()` over an all-`NULL` set returns `NULL`, not `0`.
+
+```sql
+SELECT pelanggan.nama, COALESCE(SUM(pesanan.jumlah), 0) AS total_jumlah
+FROM pelanggan
+LEFT JOIN pesanan ON pelanggan.id_pelanggan = pesanan.id_pelanggan
+GROUP BY pelanggan.id_pelanggan, pelanggan.nama
+ORDER BY total_jumlah ASC;
+```
+
+Note: if the needed data lives in a single table, no JOIN is needed at all — JOIN is only for combining data across tables.
+
+---
+
+### Subquery — Query Inside a Query
+
+A subquery runs first, produces a result, then the outer query uses that result — similar to nested parentheses in math (`(2+3)*4`, inner part evaluated first).
+
+Subquery in WHERE — single value
+
+```sql
+SELECT nama, umur
+FROM pelanggan
+WHERE umur > (SELECT AVG(umur) FROM pelanggan);
+```
+
+Subquery with IN — multiple values (a list)
+
+```sql
+SELECT nama
+FROM pelanggan
+WHERE id_pelanggan IN (
+    SELECT id_pelanggan FROM pesanan WHERE jumlah > 2
+);
+```
+
+Subquery with NOT IN
+
+```sql
+SELECT nama
+FROM pelanggan
+WHERE id_pelanggan NOT IN (
+    SELECT id_pelanggan FROM pesanan
+);
+```
+
+Subquery in FROM — querying on top of another query's result
+
+```sql
+SELECT kategori, AVG(total_per_produk) AS rata_rata
+FROM (
+    SELECT kategori, harga AS total_per_produk FROM produk
+) AS sub
+GROUP BY kategori;
+```
+
+Subquery vs JOIN:
+
+- Subquery — only need a single value or list of values to filter with (`WHERE ... IN/=`)
+- JOIN — need to display columns from two tables together in one result row
