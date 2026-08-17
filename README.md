@@ -14,7 +14,7 @@ projects/   → mini-projects combining multiple modules
 | Track                                        | Status |
 | :------------------------------------------- | :----: |
 | 1. Python Fundamentals                       |   ✅   |
-| 2. SQL & Databases                           |   ⏳   |
+| 2. SQL & Databases                           |   ✅   |
 | 3. Command Line/Terminal, Scripting & Docker |   ⏳   |
 | 4. Cloud & CI/CD                             |   ⏳   |
 
@@ -42,13 +42,12 @@ projects/   → mini-projects combining multiple modules
 
 ## Module 02 — SQL & Databases
 
-|  #  | Topic                                |     Output     | Status |
-| :-: | :----------------------------------- | :------------: | :----: |
-| 01  | Dasar SQL — SELECT & Filtering       | [notes][m2-01] |   🔄   |
-| 02  | Aggregation, JOIN, and Subqueries    |       -        |   ⏳   |
-| 03  | Database Design & Python Connections |       -        |   ⏳   |
+|  #  | Topic                             |     Output     | Status |
+| :-: | :-------------------------------- | :------------: | :----: |
+| 01  | Basic SQL — SELECT & Filtering    | [notes][m2-01] |   ✅   |
+| 02  | Aggregation, JOIN, and Subqueries | [notes][m2-01] |   ✅   |
 
-[m2-01]: modules\02-sql-database\01_SQLBasics-SELECT&Filtering
+[m2-01]: modules\02-sql-database\01_BasicSQL.md
 
 ## Module 03 — Command Line/Terminal, Scripting & Docker
 
@@ -62,14 +61,14 @@ _Not started yet._
 
 ## Projects
 
-| Project                   | Description                            | Status |
-| :------------------------ | :------------------------------------- | :----: |
-| [01 — CLI To-Do App][p1]  | Python OOP + file I/O to-do list       |   ⏳   |
-| [02 — Data Analysis][p2]  | Public dataset → DB → analysis queries |   ⏳   |
-| [03 — Dockerized App][p3] | Containerize Project 01/02             |   ⏳   |
-| [04 — Final Project][p4]  | Full app + DB + Docker + cloud + CI    |   ⏳   |
+| Project                   | Description                         | Status |
+| :------------------------ | :---------------------------------- | :----: |
+| [01 — CLI To-Do App][p1]  | Python OOP + file I/O to-do list    |   ✅   |
+| [02 — Data Analysis][p2]  | Basic SQL                           |   ✅   |
+| [03 — Dockerized App][p3] | Containerize Project 01/02          |   ⏳   |
+| [04 — Final Project][p4]  | Full app + DB + Docker + cloud + CI |   ⏳   |
 
 [p1]: projects\01-Simple-Finance-Tracker\main.py
-[p2]: -
+[p2]: projects\02-Wonosobo-Mart-Analysis-Report\WonosoboMartAnalysisReport.md
 [p3]: -
 [p4]: -
